@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" role="img" aria-label="hh_mogger pipeline: search profile, hh.ru API over OAuth, local match scoring, LLM cover letter, post-processing, manual preview or rate-limited autopilot, application sent">
+  <defs>
+    <linearGradient id="canvas2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1622"/>
+      <stop offset="100%" stop-color="#12243a"/>
+    </linearGradient>
+    <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6f8dab"/>
+    </marker>
+    <marker id="ahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5f7a97"/>
+    </marker>
+    <style>
+      .n2  { fill:#16293f; stroke:#2f5075; stroke-width:1.2; }
+      .na2 { fill:#173352; stroke:#4da3ff; stroke-width:1.3; }
+      .nm  { fill:#131f2e; stroke:#31465c; stroke-width:1.1; }
+      .t2  { fill:#e8f0f8; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; font-weight:600; text-anchor:middle; }
+      .s2  { fill:#93b4d4; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:10.5px; text-anchor:middle; }
+      .m2  { fill:#6f8dab; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:10px; text-anchor:middle; }
+      .lbl2{ fill:#8fb8de; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:10px; font-style:italic; text-anchor:middle; }
+      .ln2 { stroke:#6f8dab; stroke-width:1.4; fill:none; marker-end:url(#ah2); }
+      .lg2 { stroke:#5f7a97; stroke-width:1.3; fill:none; stroke-dasharray:4 4; marker-end:url(#ahm); }
+    </style>
+  </defs>
+
+  <rect width="880" height="300" rx="12" fill="url(#canvas2)"/>
+
+  <rect class="n2" x="14" y="96" width="126" height="76" rx="8"/>
+  <text class="t2" x="77" y="122">Search profile</text>
+  <text class="s2" x="77" y="141">filters · regions</text>
+  <text class="s2" x="77" y="156">stop words</text>
+  <path class="ln2" d="M142 134 L162 134"/>
+
+  <rect class="n2" x="164" y="96" width="126" height="76" rx="8"/>
+  <text class="t2" x="227" y="127">hh.ru API</text>
+  <text class="s2" x="227" y="146">OAuth</text>
+  <path class="ln2" d="M292 134 L312 134"/>
+
+  <rect class="na2" x="314" y="96" width="126" height="76" rx="8"/>
+  <text class="t2" x="377" y="120">Match score</text>
+  <text class="t2" x="377" y="138">0–100</text>
+  <text class="s2" x="377" y="157">no LLM call</text>
+  <path class="ln2" d="M442 134 L462 134"/>
+  <text class="lbl2" x="452" y="124">pass</text>
+
+  <path class="lg2" d="M377 176 L377 208"/>
+  <text class="lbl2" x="424" y="196">below threshold</text>
+  <rect class="nm" x="314" y="210" width="126" height="40" rx="8"/>
+  <text class="s2" x="377" y="235">Skipped</text>
+
+  <rect class="n2" x="464" y="96" width="126" height="76" rx="8"/>
+  <text class="t2" x="527" y="122">Cover letter</text>
+  <text class="s2" x="527" y="141">LLM + employer</text>
+  <text class="s2" x="527" y="156">context</text>
+  <path class="ln2" d="M592 134 L612 134"/>
+
+  <rect class="na2" x="614" y="96" width="126" height="76" rx="8"/>
+  <text class="t2" x="677" y="122">Post-processing</text>
+  <text class="s2" x="677" y="141">strip clichés ·</text>
+  <text class="s2" x="677" y="156">markdown · preambles</text>
+  <path class="ln2" d="M742 134 L762 134"/>
+
+  <rect class="n2" x="764" y="96" width="102" height="76" rx="8"/>
+  <text class="t2" x="815" y="127">Application</text>
+  <text class="t2" x="815" y="145">sent</text>
+
+  <rect class="nm" x="464" y="210" width="402" height="52" rx="8"/>
+  <text class="s2" x="665" y="231">Autopilot guardrails — daily limits · working hours</text>
+  <text class="s2" x="665" y="248">randomised pauses · dry run · manual preview mode</text>
+  <path class="lg2" d="M815 208 L815 178"/>
+
+  <text class="m2" x="440" y="40" letter-spacing="1.2">Python · aiogram 3 · React Mini App · PostgreSQL · APScheduler · Docker · Caddy</text>
+  <line x1="240" y1="56" x2="640" y2="56" stroke="#2b4a6f" stroke-width="1"/>
+</svg>

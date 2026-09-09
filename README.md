@@ -42,26 +42,7 @@ Students prepare for the UNT, teachers grade their homework, curators track grou
 managers watch the numbers — all inside Telegram. I designed the architecture, wrote the
 code, deployed it, and maintain it while it is live.
 
-```mermaid
-flowchart TB
-    U["Students · Teachers · Curators · Managers · Admins"]
-    U -->|Telegram Bot API| D
-
-    subgraph APP ["aiogram 3 · asyncio"]
-        direction TB
-        D["Dispatcher"]
-        M["Role middleware<br/>permissions · response profiling"]
-        H["Five role interfaces<br/>separate flows and rights"]
-        S["Domain services<br/>quiz bank · homework review<br/>mastery levels · score forecast"]
-        D --> M --> H --> S
-    end
-
-    M -.->|role cache| RD[("Redis")]
-    S --> RP["Repository layer<br/>SQLAlchemy 2.0 async"]
-    RP --> PG[("PostgreSQL · asyncpg<br/>8 Alembic migrations<br/>shipped with no downtime")]
-    S --> JOB["APScheduler<br/>reminders · test schedules"]
-    S <-->|gspread-asyncio| GS["Google Sheets<br/>edited by methodologists"]
-```
+<img src="diagram-schoolpro.svg" alt="SchoolPro architecture: Telegram users, aiogram application with role middleware and domain services, Redis role cache, SQLAlchemy repository layer over PostgreSQL, APScheduler jobs and Google Sheets content sync" width="100%">
 
 <details>
 <summary><b>Engineering decisions worth explaining</b></summary>
@@ -99,20 +80,7 @@ the schema, infrastructure and deploy procedure — written as the code was writ
 Applying to jobs by hand is slow, and cover letters written at volume all sound identical.
 This fixes both without becoming a spam machine — the limits are deliberate.
 
-```mermaid
-flowchart TB
-    A["Search profile<br/>filters · regions · stop words"] --> B["hh.ru API · OAuth"]
-    B --> C["Vacancy stream"]
-    C --> D{"Match score<br/>0-100"}
-    D -->|below threshold| X["Skipped"]
-    D -->|above threshold| E["Cover letter<br/>LLM + employer context"]
-    E --> F["Post-processing<br/>strip clichés · markdown · preambles"]
-    F --> G{"Mode"}
-    G -->|manual| H["Preview in Telegram"]
-    G -->|autopilot| I["Daily limits · working hours<br/>randomised pauses · dry run"]
-    H --> J["Application sent"]
-    I --> J
-```
+<img src="diagram-hhmogger.svg" alt="hh_mogger pipeline: search profile, hh.ru API over OAuth, local match scoring, LLM cover letter, post-processing, rate-limited autopilot, application sent" width="100%">
 
 <details>
 <summary><b>Why the letters don't read like a model wrote them</b></summary>

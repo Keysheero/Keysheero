@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" role="img" aria-label="SchoolPro architecture: Telegram users, aiogram application with role middleware and domain services, Redis role cache, SQLAlchemy repository layer over PostgreSQL, APScheduler jobs and Google Sheets content sync">
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1622"/>
+      <stop offset="100%" stop-color="#12243a"/>
+    </linearGradient>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6f8dab"/>
+    </marker>
+    <marker id="ahd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#4da3ff"/>
+    </marker>
+    <style>
+      .n  { fill:#16293f; stroke:#2f5075; stroke-width:1.2; }
+      .na { fill:#173352; stroke:#4da3ff; stroke-width:1.3; }
+      .ns { fill:#14283f; stroke:#39608c; stroke-width:1.2; }
+      .t  { fill:#e8f0f8; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:13.5px; font-weight:600; text-anchor:middle; }
+      .s  { fill:#93b4d4; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:11.5px; text-anchor:middle; }
+      .m  { fill:#6f8dab; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:10.5px; text-anchor:middle; }
+      .lbl{ fill:#8fb8de; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:10.5px; font-style:italic; text-anchor:middle; }
+      .pnl{ fill:#0f2137; stroke:#2b4a6f; stroke-width:1.2; stroke-dasharray:5 4; }
+      .ln { stroke:#6f8dab; stroke-width:1.4; fill:none; marker-end:url(#ah); }
+      .ld { stroke:#4da3ff; stroke-width:1.3; fill:none; stroke-dasharray:4 4; marker-end:url(#ahd); }
+    </style>
+  </defs>
+
+  <rect width="880" height="470" rx="12" fill="url(#canvas)"/>
+
+  <rect class="pnl" x="232" y="28" width="330" height="380" rx="12"/>
+  <text class="m" x="397" y="50" letter-spacing="1.2">aiogram 3 · asyncio</text>
+
+  <rect class="ns" x="18" y="58" width="170" height="96" rx="9"/>
+  <text class="t" x="103" y="82">Students · Teachers</text>
+  <text class="t" x="103" y="100">Curators · Managers</text>
+  <text class="t" x="103" y="118">Admins</text>
+  <text class="m" x="103" y="139">via Telegram Bot API</text>
+
+  <path class="ln" d="M190 106 L224 106"/>
+
+  <rect class="n" x="252" y="64" width="290" height="48" rx="8"/>
+  <text class="t" x="397" y="93">Dispatcher</text>
+  <path class="ln" d="M397 114 L397 126"/>
+
+  <rect class="na" x="252" y="130" width="290" height="62" rx="8"/>
+  <text class="t" x="397" y="155">Role middleware</text>
+  <text class="s" x="397" y="174">permissions · response profiling</text>
+  <path class="ln" d="M397 194 L397 208"/>
+
+  <rect class="n" x="252" y="212" width="290" height="62" rx="8"/>
+  <text class="t" x="397" y="237">Five role interfaces</text>
+  <text class="s" x="397" y="256">separate flows and rights</text>
+  <path class="ln" d="M397 276 L397 290"/>
+
+  <rect class="n" x="252" y="294" width="290" height="86" rx="8"/>
+  <text class="t" x="397" y="319">Domain services</text>
+  <text class="s" x="397" y="339">quiz bank · homework review</text>
+  <text class="s" x="397" y="357">mastery levels · score forecast</text>
+
+  <rect class="na" x="596" y="60" width="266" height="52" rx="8"/>
+  <text class="t" x="729" y="83">Redis</text>
+  <text class="s" x="729" y="101">role cache — no DB hit per event</text>
+  <path class="ld" d="M545 148 C 570 130, 572 92, 592 88"/>
+  <text class="lbl" x="600" y="132">role cache</text>
+
+  <rect class="n" x="596" y="140" width="266" height="52" rx="8"/>
+  <text class="t" x="729" y="163">Repository layer</text>
+  <text class="s" x="729" y="181">SQLAlchemy 2.0 async</text>
+  <path class="ln" d="M545 320 C 572 300, 572 190, 592 168"/>
+
+  <path class="ln" d="M729 194 L729 210"/>
+
+  <rect class="ns" x="596" y="214" width="266" height="64" rx="8"/>
+  <text class="t" x="729" y="238">PostgreSQL · asyncpg</text>
+  <text class="s" x="729" y="257">8 migrations shipped</text>
+  <text class="s" x="729" y="272">with zero downtime</text>
+
+  <rect class="n" x="596" y="298" width="266" height="56" rx="8"/>
+  <text class="t" x="729" y="322">APScheduler</text>
+  <text class="s" x="729" y="340">reminders · test schedules</text>
+  <path class="ln" d="M545 334 C 566 332, 572 328, 592 326"/>
+
+  <rect class="n" x="596" y="374" width="266" height="56" rx="8"/>
+  <text class="t" x="729" y="398">Google Sheets</text>
+  <text class="s" x="729" y="416">content edited without a release</text>
+  <path class="ln" d="M545 352 C 568 368, 570 396, 592 402"/>
+  <text class="lbl" x="576" y="440">gspread-asyncio</text>
+</svg>
