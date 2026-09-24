@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="278" viewBox="0 0 960 278" role="img" aria-labelledby="schoolpro-desktop-static-title schoolpro-desktop-static-desc">
+  <title id="schoolpro-desktop-static-title">SCHOOLPRO — a four-step flow illustration</title>
+  <desc id="schoolpro-desktop-static-desc">Illustrated SchoolPro event path: Telegram events pass through aiogram role middleware backed by a Redis role cache, then domain services for quizzes, homework and progress, and SQLAlchemy database access to PostgreSQL. The animation illustrates sequence, not live traffic.</desc>
+  <defs><style>
+      text { font-family: Arial, sans-serif; }
+      .eyebrow { fill: #9DAAA0; font-family: Consolas, monospace; font-size: 11px; letter-spacing: 1.3px; }
+      .heading { fill: #F3F5ED; font-size: 25px; font-weight: 700; letter-spacing: -.5px; }
+      .label { fill: #F3F5ED; font-size: 18px; font-weight: 700; letter-spacing: -.25px; }
+      .detail { fill: #9DAAA0; font-size: 13px; }
+      .step { fill: #C5F277; font-family: Consolas, monospace; font-size: 11px; letter-spacing: .5px; }
+      .caption { fill: #9DAAA0; font-size: 14px; }
+      .card { fill: #17211D; stroke: #314137; }
+      .stage { fill: #253521; stroke: #C5F277; opacity: 0; animation: stage 12s linear infinite; }
+      .stage-2 { animation-delay: 3s; }
+      .stage-3 { animation-delay: 6s; }
+      .stage-4 { animation-delay: 9s; }
+      .rail { fill: none; stroke: #314137; stroke-width: 2; }
+      .progress { fill: none; stroke: #C5F277; stroke-width: 2; stroke-dasharray: 699; stroke-dashoffset: 699; animation: progress 12s linear infinite; }
+      .packet { fill: #C5F277; stroke: #101715; stroke-width: 4; animation: packet 12s linear infinite; }
+      @keyframes stage {
+        0%, 20% { opacity: 1; }
+        25%, 99.99% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      @keyframes packet {
+        0%, 18% { transform: translateX(0px); opacity: 1; }
+        25%, 43% { transform: translateX(233px); opacity: 1; }
+        50%, 68% { transform: translateX(466px); opacity: 1; }
+        75%, 94% { transform: translateX(699px); opacity: 1; }
+        99.99% { transform: translateX(699px); opacity: 0; }
+        100% { transform: translateX(0px); opacity: 0; }
+      }
+      @keyframes progress {
+        0%, 18% { stroke-dashoffset: 699; opacity: .55; }
+        25%, 43% { stroke-dashoffset: 466; opacity: .55; }
+        50%, 68% { stroke-dashoffset: 233; opacity: .55; }
+        75%, 94% { stroke-dashoffset: 0; opacity: .55; }
+        99.99% { stroke-dashoffset: 0; opacity: 0; }
+        100% { stroke-dashoffset: 699; opacity: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) { .stage { animation: none !important; opacity: .65; }
+      .packet { animation: none !important; display: none; }
+      .progress { animation: none !important; stroke-dashoffset: 0; } }
+      .stage { animation: none !important; opacity: .65; }
+      .packet { animation: none !important; display: none; }
+      .progress { animation: none !important; stroke-dashoffset: 0; }
+    </style></defs>
+  <rect x=".5" y=".5" width="959" height="277" rx="12" fill="#101715" stroke="#314137"/>
+  <text class="eyebrow" x="28" y="28">SCHOOLPRO / FLOW ILLUSTRATION</text>
+  <text class="heading" x="28" y="61">One event. A clear path.</text>
+  <path d="M237 156 h18 m-5 -4 5 4 -5 4" fill="none" stroke="#718568" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M470 156 h18 m-5 -4 5 4 -5 4" fill="none" stroke="#718568" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M703 156 h18 m-5 -4 5 4 -5 4" fill="none" stroke="#718568" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect class="card" x="28" y="97" width="205" height="116" rx="9"/>
+  <rect class="stage stage-1" x="28" y="97" width="205" height="116" rx="9"/>
+  <text class="step" x="44" y="121">01 / ENTRY</text>
+  <text class="label" x="44" y="153">Telegram event</text>
+  <text class="detail" x="44" y="177">aiogram / asyncio</text>
+  <text class="detail" x="44" y="197">Five role interfaces</text>
+  <rect class="card" x="261" y="97" width="205" height="116" rx="9"/>
+  <rect class="stage stage-2" x="261" y="97" width="205" height="116" rx="9"/>
+  <text class="step" x="277" y="121">02 / ACCESS</text>
+  <text class="label" x="277" y="153">Role middleware</text>
+  <text class="detail" x="277" y="177">Permissions</text>
+  <text class="detail" x="277" y="197">Redis role cache</text>
+  <rect class="card" x="494" y="97" width="205" height="116" rx="9"/>
+  <rect class="stage stage-3" x="494" y="97" width="205" height="116" rx="9"/>
+  <text class="step" x="510" y="121">03 / LOGIC</text>
+  <text class="label" x="510" y="153">Domain services</text>
+  <text class="detail" x="510" y="177">Quizzes + homework</text>
+  <text class="detail" x="510" y="197">Progress + forecasts</text>
+  <rect class="card" x="727" y="97" width="205" height="116" rx="9"/>
+  <rect class="stage stage-4" x="727" y="97" width="205" height="116" rx="9"/>
+  <text class="step" x="743" y="121">04 / STORAGE</text>
+  <text class="label" x="743" y="153">PostgreSQL</text>
+  <text class="detail" x="743" y="177">SQLAlchemy</text>
+  <text class="detail" x="743" y="197">Async repository</text>
+  <path class="rail" d="M130.5 233 H829.5"/>
+  <path class="progress" d="M130.5 233 H829.5"/>
+  <circle cx="130.5" cy="233" r="3" fill="#718568"/>
+  <circle cx="363.5" cy="233" r="3" fill="#718568"/>
+  <circle cx="596.5" cy="233" r="3" fill="#718568"/>
+  <circle cx="829.5" cy="233" r="3" fill="#718568"/>
+  <circle class="packet" cx="130.5" cy="233" r="7"/>
+  <text class="caption" x="480" y="260" text-anchor="middle">Redis caches roles along the event path.</text>
+</svg>

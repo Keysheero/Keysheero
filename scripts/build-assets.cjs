@@ -7,9 +7,12 @@ const mono = 'Consolas, monospace';
 const text = (x,y,size,fill,value,extra='') => `<text x="${x}" y="${y}" font-family="${font}" font-size="${size}" fill="${fill}" ${extra}>${value}</text>`;
 const label = (x,y,value,fill='#9DAAA0',size=13) => `<text x="${x}" y="${y}" font-family="${mono}" font-size="${size}" letter-spacing="1.6" fill="${fill}">${value}</text>`;
 function svg(name,w,h,title,body,styles=''){
-  fs.writeFileSync(path.join(dir,name), `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-labelledby="title desc"><title id="title">${title}</title><desc id="desc">Original profile artwork for Kirill Belyakov. Decorative motion respects reduced-motion preferences.</desc>${styles?`<style>${styles}</style>`:''}${body}</svg>\n`);
+  const desc = name.startsWith('hero') ? 'Original profile artwork for Kirill Belyakov. The illustration traces a request through application logic and data, then a response. It is a conceptual flow, not live monitoring. Motion respects reduced-motion preferences.' : 'Original profile artwork for Kirill Belyakov. Decorative motion respects reduced-motion preferences.';
+  const content = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-labelledby="title desc"><title id="title">${title}</title><desc id="desc">${desc}</desc>${styles?`<style>${styles}</style>`:''}${body}</svg>\n`;
+  fs.writeFileSync(path.join(dir,name), content);
+  if (name.startsWith('hero')) fs.writeFileSync(path.join(dir,name.replace('.svg','-static.svg')),content.replace('</style>', '.flow,.pulse,.stage,.packet{animation:none!important}.stage,.packet{opacity:0!important}.rest{opacity:1!important}</style>'));
 }
-const motion = `@keyframes flow{to{stroke-dashoffset:-160}}@keyframes breathe{0%,100%{opacity:.35}50%{opacity:1}}.flow{animation:flow 8s linear infinite}.pulse{animation:breathe 4s ease-in-out infinite}@media(prefers-reduced-motion:reduce){.flow,.pulse{animation:none}}`;
+const motion = `@keyframes flow{to{stroke-dashoffset:-160}}@keyframes step{0%,23%{opacity:1}25%,100%{opacity:0}}@keyframes packet{0%,8%{transform:translate(0,0);opacity:0}10%{opacity:1}25%{transform:translate(0,77px);opacity:1}50%{transform:translate(0,153px);opacity:1}65%{transform:translate(0,153px);opacity:1}88%{transform:translate(0,0);opacity:1}93%,100%{transform:translate(0,0);opacity:0}}.flow{animation:flow 12s linear infinite}.stage{opacity:0;animation:step 12s step-end infinite}.s2{animation-delay:3s}.s3{animation-delay:6s}.s4{animation-delay:9s}.packet{animation:packet 12s ease-in-out infinite}.rest{opacity:0}@media(prefers-reduced-motion:reduce){.flow,.stage,.packet{animation:none}.stage,.packet{opacity:0}.rest{opacity:1}}`;
 function sculpture(tx=0,ty=0,scale=1){return `<g transform="translate(${tx} ${ty}) scale(${scale})">
   <g fill="none" stroke="#263C30"><path d="M625 131 771 57 916 131 771 205Z"/><path d="M607 232 771 150 934 232 771 314Z"/><path d="M607 262 771 180 934 262 771 344Z"/></g>
   <path d="M640 118V264L771 330 902 264V118" fill="none" stroke="#425840" stroke-dasharray="3 7"/>
@@ -24,8 +27,16 @@ function sculpture(tx=0,ty=0,scale=1){return `<g transform="translate(${tx} ${ty
   <g stroke="#253A20" stroke-width="2" fill="none"><path d="m744 116-12 6 12 6m54-12 12 6-12 6m-18-14-17 27"/></g>
   <g stroke="#C5F277" stroke-width="2" fill="none" stroke-dasharray="12 148" class="flow"><path d="M640 118V264L771 330 902 264V118"/><path d="M652 231 771 291 889 231"/></g>
   <g fill="#C5F277"><circle cx="640" cy="118" r="4"/><circle cx="902" cy="118" r="4"/><circle cx="771" cy="330" r="4"/></g>
-  <g fill="none" stroke="#C5F277" class="pulse"><circle cx="640" cy="118" r="9"/><circle cx="902" cy="118" r="9"/></g>
-  ${label(705,372,'CODE → PROD', '#9DAAA0',12)}
+  <g fill="none" stroke="#C5F277" stroke-width="2"><circle cx="640" cy="118" r="10" class="stage"/><path d="M672 176 771 127 869 176 771 226Z" class="stage s2"/><path d="M652 231 771 172 889 231 771 291Z" class="stage s3"/><circle cx="902" cy="118" r="10" class="stage s4"/></g>
+  <path d="M917 112V265" stroke="#344A37" stroke-width="1.5"/>
+  <circle cx="917" cy="112" r="4" fill="#C5F277" class="packet"/>
+  <g text-anchor="middle">
+    <g class="stage">${label(771,372,'01 / REQUEST', '#C5F277',13)}</g>
+    <g class="stage s2">${label(771,372,'02 / LOGIC', '#C5F277',13)}</g>
+    <g class="stage s3">${label(771,372,'03 / DATA', '#C5F277',13)}</g>
+    <g class="stage s4">${label(771,372,'04 / RESPONSE', '#C5F277',13)}</g>
+    <g class="rest">${label(771,372,'REQUEST → RESPONSE', '#9DAAA0',12)}</g>
+  </g>
 </g>`;}
 svg('hero.svg',960,440,'Kirill Belyakov — Python backend developer. I build it. I keep it running.',`
   <rect x=".5" y=".5" width="959" height="439" rx="18" fill="#101715" stroke="#314137"/>

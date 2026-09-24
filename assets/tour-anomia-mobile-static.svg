@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="442" viewBox="0 0 600 442" role="img" aria-labelledby="anomia-mobile-static-title anomia-mobile-static-desc">
+  <title id="anomia-mobile-static-title">ANOMIA — a four-step flow illustration</title>
+  <desc id="anomia-mobile-static-desc">Illustrated ANOMIA asset workflow: ComfyUI generates assets, contact sheets support review, approved assets are selected, and a custom Python pipeline installs them into the project. The animation illustrates the workflow, not live generation or approval activity.</desc>
+  <defs><style>
+      text { font-family: Arial, sans-serif; }
+      .eyebrow { fill: #9DAAA0; font-family: Consolas, monospace; font-size: 15px; letter-spacing: 1.3px; }
+      .heading { fill: #F3F5ED; font-size: 29px; font-weight: 700; letter-spacing: -.5px; }
+      .label { fill: #F3F5ED; font-size: 23px; font-weight: 700; letter-spacing: -.25px; }
+      .detail { fill: #9DAAA0; font-size: 17px; }
+      .step { fill: #C5F277; font-family: Consolas, monospace; font-size: 17px; letter-spacing: .5px; }
+      .caption { fill: #9DAAA0; font-size: 16px; }
+      .card { fill: #17211D; stroke: #314137; }
+      .stage { fill: #253521; stroke: #C5F277; opacity: 0; animation: stage 12s linear infinite; }
+      .stage-2 { animation-delay: 3s; }
+      .stage-3 { animation-delay: 6s; }
+      .stage-4 { animation-delay: 9s; }
+      .rail { fill: none; stroke: #314137; stroke-width: 2; }
+      .progress { fill: none; stroke: #C5F277; stroke-width: 2; stroke-dasharray: 225; stroke-dashoffset: 225; animation: progress 12s linear infinite; }
+      .packet { fill: #C5F277; stroke: #101715; stroke-width: 4; animation: packet 12s linear infinite; }
+      @keyframes stage {
+        0%, 20% { opacity: 1; }
+        25%, 99.99% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      @keyframes packet {
+        0%, 18% { transform: translateY(0px); opacity: 1; }
+        25%, 43% { transform: translateY(75px); opacity: 1; }
+        50%, 68% { transform: translateY(150px); opacity: 1; }
+        75%, 94% { transform: translateY(225px); opacity: 1; }
+        99.99% { transform: translateY(225px); opacity: 0; }
+        100% { transform: translateY(0px); opacity: 0; }
+      }
+      @keyframes progress {
+        0%, 18% { stroke-dashoffset: 225; opacity: .55; }
+        25%, 43% { stroke-dashoffset: 150; opacity: .55; }
+        50%, 68% { stroke-dashoffset: 75; opacity: .55; }
+        75%, 94% { stroke-dashoffset: 0; opacity: .55; }
+        99.99% { stroke-dashoffset: 0; opacity: 0; }
+        100% { stroke-dashoffset: 225; opacity: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) { .stage { animation: none !important; opacity: .65; }
+      .packet { animation: none !important; display: none; }
+      .progress { animation: none !important; stroke-dashoffset: 0; } }
+      .stage { animation: none !important; opacity: .65; }
+      .packet { animation: none !important; display: none; }
+      .progress { animation: none !important; stroke-dashoffset: 0; }
+    </style></defs>
+  <rect x=".5" y=".5" width="599" height="441" rx="12" fill="#101715" stroke="#314137"/>
+  <text class="eyebrow" x="28" y="32">ANOMIA / FLOW ILLUSTRATION</text>
+  <text class="heading" x="28" y="69">From generation to the game.</text>
+  <path class="rail" d="M37 134 V359"/>
+  <path class="progress" d="M37 134 V359"/>
+  <rect class="card" x="68" y="102" width="504" height="64" rx="9"/>
+  <rect class="stage stage-1" x="68" y="102" width="504" height="64" rx="9"/>
+  <circle cx="37" cy="134" r="4" fill="#718568"/>
+  <text class="step" x="553" y="129" text-anchor="end">01</text>
+  <text class="label" x="86" y="129">ComfyUI</text>
+  <text class="detail" x="86" y="153">Asset generation · Custom Python pipeline</text>
+  <rect class="card" x="68" y="177" width="504" height="64" rx="9"/>
+  <rect class="stage stage-2" x="68" y="177" width="504" height="64" rx="9"/>
+  <circle cx="37" cy="209" r="4" fill="#718568"/>
+  <text class="step" x="553" y="204" text-anchor="end">02</text>
+  <text class="label" x="86" y="204">Contact sheets</text>
+  <text class="detail" x="86" y="228">Visual review · Compare candidates</text>
+  <rect class="card" x="68" y="252" width="504" height="64" rx="9"/>
+  <rect class="stage stage-3" x="68" y="252" width="504" height="64" rx="9"/>
+  <circle cx="37" cy="284" r="4" fill="#718568"/>
+  <text class="step" x="553" y="279" text-anchor="end">03</text>
+  <text class="label" x="86" y="279">Approved assets</text>
+  <text class="detail" x="86" y="303">Selection after review · Ready for installation</text>
+  <rect class="card" x="68" y="327" width="504" height="64" rx="9"/>
+  <rect class="stage stage-4" x="68" y="327" width="504" height="64" rx="9"/>
+  <circle cx="37" cy="359" r="4" fill="#718568"/>
+  <text class="step" x="553" y="354" text-anchor="end">04</text>
+  <text class="label" x="86" y="354">Project assets</text>
+  <text class="detail" x="86" y="378">Project installation · Inside the game</text>
+  <circle class="packet" cx="37" cy="134" r="7"/>
+  <text class="caption" x="28" y="421">A custom Python pipeline connects the steps.</text>
+</svg>

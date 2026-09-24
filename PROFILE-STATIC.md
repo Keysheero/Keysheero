@@ -1,17 +1,18 @@
+<!-- Generated from README.md by scripts/build-static-profile.cjs. -->
 <a name="top"></a>
 
 <picture>
   <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="assets/hero-mobile-static.svg">
   <source media="(prefers-reduced-motion: reduce)" srcset="assets/hero-static.svg">
-  <source media="(max-width: 600px)" srcset="assets/hero-mobile.svg">
-  <img src="assets/hero.svg" width="100%" alt="Kirill Belyakov — Python backend developer. I build it. I keep it running. Almaty, Kazakhstan. Open to remote work and relocation.">
+  <source media="(max-width: 600px)" srcset="assets/hero-mobile-static.svg">
+  <img src="assets/hero-static.svg" width="100%" alt="Kirill Belyakov — Python backend developer. I build it. I keep it running. Almaty, Kazakhstan. Open to remote work and relocation.">
 </picture>
 
 <p align="center">
   <a href="#selected-work">Selected work</a> &nbsp; / &nbsp;
   <a href="#stack">Stack</a> &nbsp; / &nbsp;
   <a href="mailto:kbelakov88@gmail.com">Let's talk ↗</a> &nbsp; / &nbsp;
-  <a href="PROFILE-STATIC.md">Motion-free view</a>
+  <a href="README.md">Animated view</a>
 </p>
 
 I build Python backends for products people use every day: asynchronous services, databases, and the infrastructure underneath. **From the first schema to the production incident, I own the whole path.**
@@ -41,18 +42,18 @@ I build Python backends for products people use every day: asynchronous services
 </picture>
 
 <details>
-<summary><b>Follow a request — SchoolPro in motion</b></summary>
+<summary><b>Follow a request — SchoolPro step by step</b></summary>
 
 <br>
 
 <picture>
   <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="assets/tour-schoolpro-mobile-static.svg">
   <source media="(prefers-reduced-motion: reduce)" srcset="assets/tour-schoolpro-static.svg">
-  <source media="(max-width: 600px)" srcset="assets/tour-schoolpro-mobile.svg">
-  <img src="assets/tour-schoolpro.svg" width="100%" alt="Illustrated request flow: Telegram event → role middleware with Redis cache → domain services → SQLAlchemy and PostgreSQL. Conceptual sequence, not live traffic.">
+  <source media="(max-width: 600px)" srcset="assets/tour-schoolpro-mobile-static.svg">
+  <img src="assets/tour-schoolpro-static.svg" width="100%" alt="Illustrated request flow: Telegram event → role middleware with Redis cache → domain services → SQLAlchemy and PostgreSQL. Conceptual sequence, not live traffic.">
 </picture>
 
-[View full size](assets/tour-schoolpro.svg) · [Static diagram](assets/tour-schoolpro-static.svg)
+[View full size](assets/tour-schoolpro-static.svg) · [Static diagram](assets/tour-schoolpro-static.svg)
 
 </details>
 
@@ -93,11 +94,11 @@ I build Python backends for products people use every day: asynchronous services
 <picture>
   <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="assets/tour-hhmogger-mobile-static.svg">
   <source media="(prefers-reduced-motion: reduce)" srcset="assets/tour-hhmogger-static.svg">
-  <source media="(max-width: 600px)" srcset="assets/tour-hhmogger-mobile.svg">
-  <img src="assets/tour-hhmogger.svg" width="100%" alt="Illustrated job search flow: hh.ru via OAuth → local match scoring → LLM-assisted cover letter → rate-limited applications. Conceptual sequence, not live activity.">
+  <source media="(max-width: 600px)" srcset="assets/tour-hhmogger-mobile-static.svg">
+  <img src="assets/tour-hhmogger-static.svg" width="100%" alt="Illustrated job search flow: hh.ru via OAuth → local match scoring → LLM-assisted cover letter → rate-limited applications. Conceptual sequence, not live activity.">
 </picture>
 
-[View full size](assets/tour-hhmogger.svg) · [Static diagram](assets/tour-hhmogger-static.svg)
+[View full size](assets/tour-hhmogger-static.svg) · [Static diagram](assets/tour-hhmogger-static.svg)
 
 Post-processing strips model preambles and formatting. Automated applications have deliberate rate limits. The frontend is React and TypeScript; the backend uses Python, OAuth, and Caddy.
 
@@ -126,11 +127,11 @@ Post-processing strips model preambles and formatting. Automated applications ha
 <picture>
   <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="assets/tour-anomia-mobile-static.svg">
   <source media="(prefers-reduced-motion: reduce)" srcset="assets/tour-anomia-static.svg">
-  <source media="(max-width: 600px)" srcset="assets/tour-anomia-mobile.svg">
-  <img src="assets/tour-anomia.svg" width="100%" alt="Illustrated asset pipeline: ComfyUI generation → contact-sheet review → approved assets → installation in the game project. Conceptual sequence.">
+  <source media="(max-width: 600px)" srcset="assets/tour-anomia-mobile-static.svg">
+  <img src="assets/tour-anomia-static.svg" width="100%" alt="Illustrated asset pipeline: ComfyUI generation → contact-sheet review → approved assets → installation in the game project. Conceptual sequence.">
 </picture>
 
-[View full size](assets/tour-anomia.svg) · [Static diagram](assets/tour-anomia-static.svg)
+[View full size](assets/tour-anomia-static.svg) · [Static diagram](assets/tour-anomia-static.svg)
 
 A custom Python pipeline connects ComfyUI generation, contact sheets for review, and installation of approved assets into the project. Save-state migrations keep older saves loading across releases.
 
@@ -165,4 +166,4 @@ Client work is under contract; other projects are commercial. I can walk you thr
 
 <p align="center"><sub><a href="mailto:kbelakov88@gmail.com">kbelakov88@gmail.com</a> · Open to remote work &amp; relocation</sub></p>
 
-<p align="center"><sub><a href="#top">↑ Back to top</a> · <a href="PROFILE-STATIC.md">Read without motion</a></sub></p>
+<p align="center"><sub><a href="#top">↑ Back to top</a> · <a href="README.md">View animated profile</a></sub></p>
