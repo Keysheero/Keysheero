@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="352" viewBox="0 0 960 352" role="img" aria-labelledby="schoolpro-title schoolpro-desc">
+  <title id="schoolpro-title">SchoolPro — five roles, one backend</title>
+  <desc id="schoolpro-desc">Students, teachers, curators, managers and admins use Telegram. An asynchronous aiogram application handles role permissions and profiling, then calls domain services for quizzes, homework and progress. SQLAlchemy provides database access to PostgreSQL. Redis caches roles for the middleware, and Google Sheets synchronises curriculum content with the application.</desc>
+  <defs>
+    <marker id="flow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#C5F277" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .eyebrow { fill: #9DAAA0; font-family: Consolas, 'Liberation Mono', monospace; font-size: 11px; letter-spacing: 1.6px; }
+      .heading { fill: #F3F5ED; font-size: 25px; font-weight: 600; letter-spacing: -.5px; }
+      .label { fill: #F3F5ED; font-size: 17px; font-weight: 600; }
+      .detail { fill: #9DAAA0; font-size: 13px; }
+      .step { fill: #C5F277; font-family: Consolas, 'Liberation Mono', monospace; font-size: 11px; letter-spacing: 1px; }
+      .node { fill: #17211D; stroke: #314137; }
+      .connection { fill: none; stroke: #7C936C; stroke-width: 1.5; marker-end: url(#flow); }
+      .sync { fill: none; stroke: #7C936C; stroke-width: 1.25; marker-start: url(#flow); marker-end: url(#flow); }
+    </style>
+  </defs>
+
+  <rect x=".5" y=".5" width="959" height="351" rx="10" fill="#101715" stroke="#314137"/>
+  <text class="eyebrow" x="28" y="31">SCHOOLPRO / SYSTEM MAP</text>
+  <text class="heading" x="28" y="65">Five roles. One backend.</text>
+  <circle cx="821" cy="51" r="3" fill="#C5F277"/>
+  <text class="eyebrow" x="833" y="55" letter-spacing="1">ASYNC PYTHON</text>
+  <path d="M28 83 H932" stroke="#314137"/>
+
+  <!-- The horizontal path is the request flow, not a deployment diagram. -->
+  <path class="connection" d="M196 170 H216"/>
+  <path class="connection" d="M338 170 H358"/>
+  <path class="connection" d="M542 170 H562"/>
+  <path class="connection" d="M742 170 H762"/>
+
+  <rect class="node" x="28" y="105" width="166" height="130" rx="10"/>
+  <text class="step" x="44" y="127">01 / PEOPLE</text>
+  <text class="label" x="44" y="154">5 role interfaces</text>
+  <text class="detail" x="44" y="178">Students · Teachers</text>
+  <text class="detail" x="44" y="199">Curators · Managers</text>
+  <text class="detail" x="44" y="220">Admins</text>
+
+  <rect class="node" x="220" y="105" width="116" height="130" rx="10"/>
+  <text class="step" x="236" y="127">02 / API</text>
+  <text class="label" x="236" y="164">Telegram</text>
+  <text class="detail" x="236" y="187">Bot API</text>
+
+  <rect x="362" y="105" width="178" height="130" rx="10" fill="#1D2A20" stroke="#647B45"/>
+  <text class="step" x="378" y="127">03 / APPLICATION</text>
+  <text class="label" x="378" y="154">aiogram 3</text>
+  <text class="detail" x="378" y="178">Role middleware</text>
+  <text class="detail" x="378" y="199">Permissions + profiling</text>
+  <text class="detail" x="378" y="220">asyncio</text>
+
+  <rect class="node" x="566" y="105" width="174" height="130" rx="10"/>
+  <text class="step" x="582" y="127">04 / DOMAIN</text>
+  <text class="label" x="582" y="154">Domain services</text>
+  <text class="detail" x="582" y="178">Quizzes + homework</text>
+  <text class="detail" x="582" y="199">Mastery levels</text>
+  <text class="detail" x="582" y="220">Score forecasts</text>
+
+  <rect class="node" x="766" y="105" width="166" height="130" rx="10"/>
+  <text class="step" x="782" y="127">05 / PERSISTENCE</text>
+  <text class="label" x="782" y="154">SQLAlchemy</text>
+  <text class="detail" x="782" y="176">Async repository</text>
+  <path d="M782 189 H916" stroke="#314137"/>
+  <text class="label" x="782" y="215">PostgreSQL</text>
+
+  <!-- Supporting data integrations connect to their application layer. -->
+  <path class="sync" d="M451 239 V264"/>
+  <path class="sync" d="M653 239 V264"/>
+  <rect class="node" x="362" y="268" width="178" height="58" rx="10"/>
+  <text class="label" x="378" y="292">Redis</text>
+  <text class="detail" x="378" y="312">Role cache</text>
+  <rect class="node" x="566" y="268" width="174" height="58" rx="10"/>
+  <text class="label" x="582" y="292">Google Sheets</text>
+  <text class="detail" x="582" y="312">Two-way content sync</text>
+
+  <path d="M28 282 H50" stroke="#C5F277" stroke-width="2"/>
+  <text class="detail" x="28" y="307">Role-aware access.</text>
+  <text class="detail" x="28" y="326">Shared business logic.</text>
+</svg>
