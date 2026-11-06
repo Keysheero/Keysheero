@@ -1,40 +1,47 @@
-# Profile design
+# Profile maintenance
 
-The profile lives in `README.md`. All artwork is stored in `assets/`; it makes no third-party image requests and needs no scheduled workflows.
+`README.md` is the source. `PROFILE-STATIC.md` is generated from it.
 
-- Graphite `#101715`, mint `#C5F277`, warm white `#F3F5ED`, paper `#E9EDDF`.
-- Desktop and mobile artwork use native `<picture>` sources at a 600px breakpoint.
-- The hero illustrates a request, application logic, data, and response in a 12-second cycle. It remains legible when motion is disabled and respects `prefers-reduced-motion`.
-- Each project's disclosure contains a four-step animated flow. These illustrate workflows; they are not live activity or telemetry.
-- Reduced-motion sources precede mobile sources. `PROFILE-STATIC.md` offers a separate view with static artwork for readers who want to disable motion manually.
-- Project anchors, next-project links, and contextual email subjects use native links. Opening a disclosure does not necessarily restart an already-loaded SVG animation.
-- Project details use native disclosures. Core text and contact links work without images.
-- Text and metrics come from the profile before the redesign; update them when the underlying project changes.
+## Content
 
-## Editing
+The profile describes SchoolPro, hh_mogger and ANOMIA using information already present in the public profile. SchoolPro's 100+ paying subscribers and production start in May 2025 were reconfirmed by the owner in November 2026. These business figures are edited manually; the GitHub workflow does not estimate them.
 
-Edit prose in `README.md`. Regenerate artwork and the static mirror with:
+The number of database migrations was removed: it describes an implementation detail rather than a product result. The prose uses short project descriptions instead of slogans.
+
+## Artwork
+
+The SVGs use graphite and green with matching light and dark palettes. `<picture>` selects phone layouts below 600px and the appropriate color theme. All fonts are system fonts and every asset is committed to this repository.
+
+Two illustrations animate: the header and the SchoolPro request flow. They describe a sequence, not live traffic. CSS honors `prefers-reduced-motion`; the static profile links to separate SVGs with no keyframes or moving objects. Text and contact links remain readable without images.
+
+## GitHub activity
+
+`.github/workflows/profile.yml` refreshes activity daily at 05:17 UTC (10:17 in Almaty), on relevant pushes, and on manual dispatch. GitHub can delay scheduled workflows.
+
+The updater reads the same public contribution calendar visible at <https://github.com/users/Keysheero/contributions>. It does not read private repositories or require a personal access token. If private contribution counts are already visible on the public profile, they are included exactly as GitHub displays them; repository names are never collected.
+
+`data/activity.json` holds the date range, daily counts, monthly totals and snapshot date. Contributions are counted over the past year ending on the UTC snapshot date. The first and last monthly bars may represent partial months. Active days are dates with at least one contribution.
+
+The parser checks every date and count. Unexpected HTML, a missing tooltip, duplicate dates or a failed request stop the job before any new snapshot is committed. The last successful artwork stays visible. GitHub may disable scheduled workflows after extended repository inactivity; if needed, re-enable this workflow in Actions and run it manually.
+
+## Build and verify
+
+Node.js 24 is used in CI. No npm dependencies are required.
 
 ```sh
+node --test scripts/activity.test.cjs
+node scripts/update-activity.cjs
 node scripts/build-assets.cjs
-node scripts/build-tours.cjs
 node scripts/build-static-profile.cjs
+node scripts/check-profile.cjs
 ```
 
-Node.js is the only requirement; no packages are needed. The architecture diagram `assets/schoolpro.svg` is edited directly. Keep alt text in sync with artwork. Do not edit `PROFILE-STATIC.md` independently; it is generated from `README.md`.
+To change only the design offline, skip `update-activity.cjs` and build from the saved snapshot. Do not edit generated SVGs or the static profile directly. Keep the `alt="GitHub activity:…"` prefix in the README; the generator updates its totals.
 
-## Rollback
+Browser verification covers both themes at desktop and phone widths, source selection, loaded images, text bounds inside SVGs and reduced-motion behavior.
 
-The original profile is preserved at `backup/profile-before-2026-09-24` (commit `bdf1875`). The approved first redesign is preserved at `backup/profile-before-interactions-2026-09-24` (commit `a58e6b9`). The interaction upgrade is tagged `release/profile-interactions-2026-09-24`.
+## History and rollback
 
-To remove only the new interactions and restore the first redesign, run these commands from a clean checkout:
+The previous complete design is commit `bb63f3e`. Earlier versions remain under the existing `backup/profile-before-2026-09-24`, `backup/profile-before-interactions-2026-09-24`, `release/profile-design-2026-09-24` and `release/profile-interactions-2026-09-24` tags.
 
-```sh
-git fetch origin --tags
-git switch main
-git pull --ff-only
-git revert --no-edit release/profile-interactions-2026-09-24
-git push origin main
-```
-
-To also return to the original profile, then revert `release/profile-design-2026-09-24` and push. Revert the interaction upgrade first. If later commits change the same files, review any conflicts before pushing. Do not force-push or reset the branch. Separate Git bundles of both earlier versions were saved locally.
+To undo this redesign, revert its commit on `main` and push the revert. Do not reset or force-push shared history. Reverting it also removes the scheduled activity workflow.

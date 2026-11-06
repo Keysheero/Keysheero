@@ -1,168 +1,86 @@
-<a name="top"></a>
-
 <picture>
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="assets/hero-mobile-static.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/hero-static.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="assets/hero-mobile-light.svg">
   <source media="(max-width: 600px)" srcset="assets/hero-mobile.svg">
-  <img src="assets/hero.svg" width="100%" alt="Kirill Belyakov — Python backend developer. I build it. I keep it running. Almaty, Kazakhstan. Open to remote work and relocation.">
+  <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
+  <img src="assets/hero.svg" width="100%" alt="Kirill Belyakov / Keysheero — Python backend developer. Almaty, Kazakhstan.">
 </picture>
 
-<p align="center">
-  <a href="#selected-work">Selected work</a> &nbsp; / &nbsp;
-  <a href="#stack">Stack</a> &nbsp; / &nbsp;
-  <a href="mailto:kbelakov88@gmail.com">Let's talk ↗</a> &nbsp; / &nbsp;
-  <a href="PROFILE-STATIC.md">Motion-free view</a>
-</p>
+I write Python backends and Telegram apps. My main project is **SchoolPro**, an exam-prep platform I've been building and maintaining since May 2025.
 
-I build Python backends for products people use every day: asynchronous services, databases, and the infrastructure underneath. **From the first schema to the production incident, I own the whole path.**
+[Email](mailto:kbelakov88@gmail.com) · [Projects](#projects) · [Stack](#stack) · [Activity](#github-activity) · [Disable animation](PROFILE-STATIC.md)
 
-<sub>Almaty, Kazakhstan · Open to remote work &amp; relocation · Russian C2 / English B2</sub>
+Open to remote work and relocation. Russian C2 · English B2.
 
-## Selected work
+## Projects
 
-<p>
-  <a href="#schoolpro">01 · SchoolPro</a> &nbsp; / &nbsp;
-  <a href="#hh-mogger">02 · hh_mogger</a> &nbsp; / &nbsp;
-  <a href="#anomia">03 · ANOMIA</a>
-</p>
+### SchoolPro
 
-<a name="schoolpro"></a>
+A Telegram platform for UNT exam prep. I'm the sole developer: backend, database, deployment and maintenance.
 
 <picture>
-  <source media="(max-width: 600px)" srcset="assets/schoolpro-title-mobile.svg">
-  <img src="assets/schoolpro-title.svg" width="100%" alt="01 / SchoolPro — EdTech. Sole developer. In production since May 2025.">
-</picture>
-
-**A school day, inside Telegram.** Students prepare for the UNT, teachers review homework, and curators and managers keep things moving. I designed, built, deployed, and maintain the platform.
-
-<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="assets/proof-mobile-light.svg">
   <source media="(max-width: 600px)" srcset="assets/proof-mobile.svg">
-  <img src="assets/proof.svg" width="100%" alt="SchoolPro: 100+ paying subscribers · 5 role interfaces · 8 live database migrations.">
+  <source media="(prefers-color-scheme: light)" srcset="assets/proof-light.svg">
+  <img src="assets/proof.svg" width="100%" alt="SchoolPro: 100+ paying subscribers, 5 user roles, in production since May 2025.">
 </picture>
+
+- Homework, quizzes and student progress, with separate interfaces for five roles.
+- Redis caches role lookups; Google Sheets sync lets staff update course content.
+- PostgreSQL migrations with backups and rollback plans.
+
+**Python · aiogram · PostgreSQL · SQLAlchemy · Redis · Docker**
 
 <details>
-<summary><b>Follow a request — SchoolPro in motion</b></summary>
+<summary>How a request moves through SchoolPro</summary>
 
 <br>
-
 <picture>
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="assets/tour-schoolpro-mobile-static.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/tour-schoolpro-static.svg">
-  <source media="(max-width: 600px)" srcset="assets/tour-schoolpro-mobile.svg">
-  <img src="assets/tour-schoolpro.svg" width="100%" alt="Illustrated request flow: Telegram event → role middleware with Redis cache → domain services → SQLAlchemy and PostgreSQL. Conceptual sequence, not live traffic.">
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="assets/flow-mobile-light.svg">
+  <source media="(max-width: 600px)" srcset="assets/flow-mobile.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/flow-light.svg">
+  <img src="assets/flow.svg" width="100%" alt="SchoolPro request flow: Telegram event → role middleware with Redis cache → domain services → SQLAlchemy and PostgreSQL. Illustration, not live traffic.">
 </picture>
 
-[View full size](assets/tour-schoolpro.svg) · [Static diagram](assets/tour-schoolpro-static.svg)
+Role checks happen in middleware. Domain services handle quizzes, homework and progress; SQLAlchemy handles database access.
 
 </details>
 
-<details>
-<summary><b>Explore the architecture &amp; engineering decisions</b></summary>
+### hh_mogger
 
-<br>
+A Telegram Mini App for job searches. It fetches vacancies from hh.ru, scores matches locally, then generates cover letters for relevant vacancies. Applications are rate-limited.
 
-<img src="assets/schoolpro.svg" width="100%" alt="Five user roles connect through Telegram to aiogram middleware, domain services, and SQLAlchemy with PostgreSQL. Redis caches roles; Google Sheets synchronises curriculum content.">
+**Python · React · TypeScript · hh.ru API · OAuth**
 
-- **Fewer database reads.** Redis-backed role middleware removes repeated permission lookups from the event path.
-- **Content without a release.** Methodologists update curriculum through two-way Google Sheets sync.
-- **Changes with a way back.** Alembic migrations ship with backups and rollback plans.
-- **Operations included.** Docker on Linux, handler profiling, structured logs, pytest, and deployment documentation.
+### ANOMIA
 
-[Discuss SchoolPro ↗](mailto:kbelakov88@gmail.com?subject=SchoolPro%20architecture%20walkthrough)
+A released visual novel with turn-based combat and save migrations. I also built a Python pipeline for generating assets with ComfyUI, reviewing contact sheets and adding approved images to the game. Available on itch.io and Patreon, with an English translation.
 
-</details>
+**Python · ComfyUI**
 
-<sub><a href="#selected-work">↑ All projects</a> · <a href="#hh-mogger">Next: hh_mogger →</a></sub>
-
-<br>
-
-<a name="hh-mogger"></a>
-
-<picture>
-  <source media="(max-width: 600px)" srcset="assets/hh-mogger-title-mobile.svg">
-  <img src="assets/hh-mogger-title.svg" width="100%" alt="02 / hh_mogger — job search automation. Telegram Mini App.">
-</picture>
-
-**Find the fit. Then write the letter.** A Telegram Mini App combining the hh.ru API, local vacancy scoring, and LLM-assisted cover letters. Matching runs locally; generation is reserved for relevant vacancies.
-
-<details>
-<summary><b>Inside hh_mogger — matching, generation &amp; delivery</b></summary>
-
-<br>
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="assets/tour-hhmogger-mobile-static.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/tour-hhmogger-static.svg">
-  <source media="(max-width: 600px)" srcset="assets/tour-hhmogger-mobile.svg">
-  <img src="assets/tour-hhmogger.svg" width="100%" alt="Illustrated job search flow: hh.ru via OAuth → local match scoring → LLM-assisted cover letter → rate-limited applications. Conceptual sequence, not live activity.">
-</picture>
-
-[View full size](assets/tour-hhmogger.svg) · [Static diagram](assets/tour-hhmogger-static.svg)
-
-Post-processing strips model preambles and formatting. Automated applications have deliberate rate limits. The frontend is React and TypeScript; the backend uses Python, OAuth, and Caddy.
-
-[Discuss hh_mogger ↗](mailto:kbelakov88@gmail.com?subject=hh_mogger%20matching%20and%20automation)
-
-</details>
-
-<sub><a href="#selected-work">↑ All projects</a> · <a href="#anomia">Next: ANOMIA →</a></sub>
-
-<br>
-
-<a name="anomia"></a>
-
-<picture>
-  <source media="(max-width: 600px)" srcset="assets/anomia-title-mobile.svg">
-  <img src="assets/anomia-title.svg" width="100%" alt="03 / ANOMIA — commercial visual novel. Released and monetised.">
-</picture>
-
-**A game shipped. A pipeline built.** Commercial visual novel with turn-based combat, progression, and save-state migrations. Released on itch.io and Patreon, with an English translation.
-
-<details>
-<summary><b>Inside ANOMIA — the asset pipeline</b></summary>
-
-<br>
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="assets/tour-anomia-mobile-static.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/tour-anomia-static.svg">
-  <source media="(max-width: 600px)" srcset="assets/tour-anomia-mobile.svg">
-  <img src="assets/tour-anomia.svg" width="100%" alt="Illustrated asset pipeline: ComfyUI generation → contact-sheet review → approved assets → installation in the game project. Conceptual sequence.">
-</picture>
-
-[View full size](assets/tour-anomia.svg) · [Static diagram](assets/tour-anomia-static.svg)
-
-A custom Python pipeline connects ComfyUI generation, contact sheets for review, and installation of approved assets into the project. Save-state migrations keep older saves loading across releases.
-
-[Discuss ANOMIA ↗](mailto:kbelakov88@gmail.com?subject=ANOMIA%20asset%20pipeline%20walkthrough)
-
-</details>
-
-<sub><a href="#selected-work">↑ All projects</a> · <a href="#stack">Explore the stack →</a></sub>
+The repositories are private: client work and commercial projects. I can discuss the architecture and share code where permitted.
 
 ## Stack
 
-**Backend** &nbsp; Python · asyncio · aiogram · FastAPI<br>
-**Data** &nbsp; PostgreSQL · SQLAlchemy · Alembic · Redis<br>
-**Delivery** &nbsp; Docker · Linux · Git · pytest<br>
-**Interfaces** &nbsp; React · TypeScript · Telegram Mini Apps
+| | Tools I use |
+| :--- | :--- |
+| Backend | Python, asyncio, aiogram, FastAPI |
+| Data | PostgreSQL, SQLAlchemy, Alembic, Redis |
+| Deployment & testing | Docker, Linux, Git, pytest |
+| Frontend | React, TypeScript, Telegram Mini Apps |
 
-<details>
-<summary><b>Where is the code?</b></summary>
+## GitHub activity
 
-Client work is under contract; other projects are commercial. I can walk you through architecture, implementation decisions, and production trade-offs. Code walkthroughs and repository access are available where sharing is permitted.
-
-</details>
-
-<br>
-
-<a href="mailto:kbelakov88@gmail.com">
+<a href="https://github.com/Keysheero?tab=overview">
   <picture>
-    <source media="(max-width: 600px)" srcset="assets/contact-mobile.svg">
-    <img src="assets/contact.svg" width="100%" alt="Have a backend worth building? Let's talk — kbelakov88@gmail.com">
+    <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg">
+    <source media="(max-width: 600px)" srcset="assets/activity-mobile.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg">
+    <img src="assets/activity.svg" width="100%" alt="GitHub activity: 371 contributions on 54 active days, 2025-11-07 to 2026-11-06. Updated 2026-11-06.">
   </picture>
 </a>
 
-<p align="center"><sub><a href="mailto:kbelakov88@gmail.com">kbelakov88@gmail.com</a> · Open to remote work &amp; relocation</sub></p>
+<sub>Activity visible on my public profile · updated daily.</sub>
 
-<p align="center"><sub><a href="#top">↑ Back to top</a> · <a href="PROFILE-STATIC.md">Read without motion</a></sub></p>
+---
+
+[kbelakov88@gmail.com](mailto:kbelakov88@gmail.com) · Almaty, Kazakhstan

@@ -1,2 +1,7 @@
+* text=auto eol=lf
+
 # Artwork generators support the profile; they are not a showcased application.
 scripts/** linguist-documentation
+data/** linguist-generated
+assets/** linguist-generated
+PROFILE-STATIC.md linguist-generated

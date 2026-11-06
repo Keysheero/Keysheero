@@ -1,124 +1,130 @@
-const fs = require('fs');
-const path = require('path');
-const dir = path.join(__dirname, '../assets');
-fs.mkdirSync(dir, {recursive:true});
-const font = 'Arial, Helvetica, sans-serif';
-const mono = 'Consolas, monospace';
-const text = (x,y,size,fill,value,extra='') => `<text x="${x}" y="${y}" font-family="${font}" font-size="${size}" fill="${fill}" ${extra}>${value}</text>`;
-const label = (x,y,value,fill='#9DAAA0',size=13) => `<text x="${x}" y="${y}" font-family="${mono}" font-size="${size}" letter-spacing="1.6" fill="${fill}">${value}</text>`;
-function svg(name,w,h,title,body,styles=''){
-  const desc = name.startsWith('hero') ? 'Original profile artwork for Kirill Belyakov. The illustration traces a request through application logic and data, then a response. It is a conceptual flow, not live monitoring. Motion respects reduced-motion preferences.' : 'Original profile artwork for Kirill Belyakov. Decorative motion respects reduced-motion preferences.';
-  const content = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-labelledby="title desc"><title id="title">${title}</title><desc id="desc">${desc}</desc>${styles?`<style>${styles}</style>`:''}${body}</svg>\n`;
-  fs.writeFileSync(path.join(dir,name), content);
-  if (name.startsWith('hero')) fs.writeFileSync(path.join(dir,name.replace('.svg','-static.svg')),content.replace('</style>', '.flow,.pulse,.stage,.packet{animation:none!important}.stage,.packet{opacity:0!important}.rest{opacity:1!important}</style>'));
-}
-const motion = `@keyframes flow{to{stroke-dashoffset:-160}}@keyframes step{0%,23%{opacity:1}25%,100%{opacity:0}}@keyframes packet{0%,8%{transform:translate(0,0);opacity:0}10%{opacity:1}25%{transform:translate(0,77px);opacity:1}50%{transform:translate(0,153px);opacity:1}65%{transform:translate(0,153px);opacity:1}88%{transform:translate(0,0);opacity:1}93%,100%{transform:translate(0,0);opacity:0}}.flow{animation:flow 12s linear infinite}.stage{opacity:0;animation:step 12s step-end infinite}.s2{animation-delay:3s}.s3{animation-delay:6s}.s4{animation-delay:9s}.packet{animation:packet 12s ease-in-out infinite}.rest{opacity:0}@media(prefers-reduced-motion:reduce){.flow,.stage,.packet{animation:none}.stage,.packet{opacity:0}.rest{opacity:1}}`;
-function sculpture(tx=0,ty=0,scale=1){return `<g transform="translate(${tx} ${ty}) scale(${scale})">
-  <g fill="none" stroke="#263C30"><path d="M625 131 771 57 916 131 771 205Z"/><path d="M607 232 771 150 934 232 771 314Z"/><path d="M607 262 771 180 934 262 771 344Z"/></g>
-  <path d="M640 118V264L771 330 902 264V118" fill="none" stroke="#425840" stroke-dasharray="3 7"/>
-  <g stroke="#4D654B" stroke-width="1.2">
-    <path d="M652 231 771 291 889 231V255L771 315 652 255Z" fill="#17251D"/>
-    <path d="M652 231 771 172 889 231 771 291Z" fill="#203323"/>
-    <path d="M672 176 771 226 869 176V201L771 251 672 201Z" fill="#243F28"/>
-    <path d="M672 176 771 127 869 176 771 226Z" fill="#324F30"/>
-    <path d="M694 120 771 159 848 120V146L771 185 694 146Z" fill="#80A558" stroke="#C5F277"/>
-    <path d="M694 120 771 82 848 120 771 159Z" fill="#C5F277" stroke="#DBF6AA"/>
-  </g>
-  <g stroke="#253A20" stroke-width="2" fill="none"><path d="m744 116-12 6 12 6m54-12 12 6-12 6m-18-14-17 27"/></g>
-  <g stroke="#C5F277" stroke-width="2" fill="none" stroke-dasharray="12 148" class="flow"><path d="M640 118V264L771 330 902 264V118"/><path d="M652 231 771 291 889 231"/></g>
-  <g fill="#C5F277"><circle cx="640" cy="118" r="4"/><circle cx="902" cy="118" r="4"/><circle cx="771" cy="330" r="4"/></g>
-  <g fill="none" stroke="#C5F277" stroke-width="2"><circle cx="640" cy="118" r="10" class="stage"/><path d="M672 176 771 127 869 176 771 226Z" class="stage s2"/><path d="M652 231 771 172 889 231 771 291Z" class="stage s3"/><circle cx="902" cy="118" r="10" class="stage s4"/></g>
-  <path d="M917 112V265" stroke="#344A37" stroke-width="1.5"/>
-  <circle cx="917" cy="112" r="4" fill="#C5F277" class="packet"/>
-  <g text-anchor="middle">
-    <g class="stage">${label(771,372,'01 / REQUEST', '#C5F277',13)}</g>
-    <g class="stage s2">${label(771,372,'02 / LOGIC', '#C5F277',13)}</g>
-    <g class="stage s3">${label(771,372,'03 / DATA', '#C5F277',13)}</g>
-    <g class="stage s4">${label(771,372,'04 / RESPONSE', '#C5F277',13)}</g>
-    <g class="rest">${label(771,372,'REQUEST → RESPONSE', '#9DAAA0',12)}</g>
-  </g>
-</g>`;}
-svg('hero.svg',960,440,'Kirill Belyakov — Python backend developer. I build it. I keep it running.',`
-  <rect x=".5" y=".5" width="959" height="439" rx="18" fill="#101715" stroke="#314137"/>
-  <path d="M40 75H920M40 354H568" stroke="#314137"/>
-  ${text(40,49,27,'#C5F277','kb.', 'font-weight="700" letter-spacing="-2"')}
-  ${label(105,47,'KIRILL BELYAKOV','#F3F5ED',14)}
-  ${label(688,47,'PYTHON / BACKEND','#9DAAA0',13)}
-  ${text(38,160,68,'#F3F5ED','I build it.', 'font-weight="700" letter-spacing="-3.4"')}
-  ${text(38,229,56,'#F3F5ED','I keep it', 'font-weight="700" letter-spacing="-2.8"')}
-  ${text(38,293,68,'#C5F277','running.', 'font-weight="700" letter-spacing="-3.4"')}
-  ${text(42,386,18,'#D5DDD2','Async services. Real users. Full ownership.')}
-  ${label(42,416,'ALMATY, KZ  /  REMOTE + RELOCATION','#9DAAA0',12)}
-  ${sculpture(0,13,1)}
-`,motion);
-svg('hero-mobile.svg',600,590,'Kirill Belyakov — Python backend developer. I build it. I keep it running.',`
-  <rect x=".5" y=".5" width="599" height="589" rx="18" fill="#101715" stroke="#314137"/>
-  ${text(32,49,30,'#C5F277','kb.','font-weight="700" letter-spacing="-2"')}
-  ${label(92,46,'KIRILL BELYAKOV','#F3F5ED',18)}
-  <path d="M32 73H568" stroke="#314137"/>
-  ${label(32,114,'PYTHON / BACKEND','#9DAAA0',17)}
-  ${text(28,191,70,'#F3F5ED','I build it.','font-weight="700" letter-spacing="-3"')}
-  ${text(28,263,70,'#F3F5ED','I keep it','font-weight="700" letter-spacing="-3"')}
-  ${text(28,335,70,'#C5F277','running.','font-weight="700" letter-spacing="-3"')}
-  ${sculpture(-210,230,.8)}
-  ${text(32,403,21,'#D5DDD2','Async services.')}
-  ${text(32,435,21,'#D5DDD2','Real users.')}
-  ${text(32,467,21,'#D5DDD2','Full ownership.')}
-  ${label(32,536,'ALMATY, KZ','#9DAAA0',16)}
-  ${label(32,566,'REMOTE + RELOCATION','#9DAAA0',16)}
-`,motion);
-function metrics(mobile){
-  const w=mobile?600:960, h=mobile?180:146, col=w/3;
-  let body=`<rect width="${w}" height="${h}" rx="14" fill="#E9EDDF"/>`;
-  [['100+','paying subscribers'],['5','role interfaces'],['8','live migrations']].forEach(([n,l],i)=>{
-    const x=col*i+(mobile?20:32);
-    if(i)body+=`<path d="M${col*i} 25V${h-25}" stroke="#C8CDBD"/>`;
-    body+=label(x,mobile?33:30,'0'+(i+1),'#50604D',mobile?15:11);
-    body+=text(x,mobile?108:91,mobile?53:48,'#17231C',n,'font-weight="700" letter-spacing="-2"');
-    body+=text(x,mobile?147:120,mobile?18:18,'#475541',l);
-  });
-  svg(mobile?'proof-mobile.svg':'proof.svg',w,h,'SchoolPro: 100+ paying subscribers, 5 role interfaces, 8 live database migrations.',body);
-}
-metrics(false);metrics(true);
-function project(name,index,title,category,light,art){
-  const bg=light?'#E9EDDF':'#17211D', fg=light?'#17231C':'#F3F5ED', muted=light?'#53634F':'#9DAAA0';
-  svg(name,960,155,`${index} / ${title} — ${category}`,`
-  <rect x=".5" y=".5" width="959" height="154" rx="14" fill="${bg}" stroke="${light?'#D6DDCB':'#314137'}"/>
-  ${label(30,36,`${index} / SELECTED WORK`,muted,12)}
-  ${text(27,94,45,fg,title,'font-weight="700" letter-spacing="-1.6"')}
-  ${text(30,128,17,muted,category)}${art}`);
-}
-project('schoolpro-title.svg','01','SchoolPro','EDTECH · SOLE DEVELOPER · IN PRODUCTION SINCE MAY 2025',false,`
- <g transform="translate(770 28)" fill="none" stroke="#C5F277" stroke-width="1.4"><path d="m0 20 55-20 55 20-55 20Z"/><path d="m0 43 55 20 55-20M0 66l55 20 55-20"/><path d="M55 40v46"/><circle cx="55" cy="97" r="3" fill="#C5F277"/></g>`);
-project('hh-mogger-title.svg','02','hh_mogger','JOB SEARCH AUTOMATION · TELEGRAM MINI APP',true,`
- <g transform="translate(762 31)" fill="none" stroke="#6B7D58" stroke-width="1.5"><rect x="0" y="0" width="68" height="89" rx="6"/><path d="M13 21h35M13 34h26M13 47h30"/><rect x="37" y="18" width="68" height="89" rx="6" fill="#DCE7CC"/><path d="m55 65 12 12 22-28" stroke="#314929" stroke-width="3"/></g>`);
-project('anomia-title.svg','03','ANOMIA','COMMERCIAL VISUAL NOVEL · RELEASED &amp; MONETISED',false,`
- <g transform="translate(829 79)" fill="none" stroke="#9DAAA0"><circle r="51"/><circle r="34"/><path d="m0-58 51 87H-51Z" stroke="#C5F277" stroke-width="1.5"/><path d="M-65 0H65M0-65V65" stroke="#314137"/><circle r="6" fill="#C5F277" stroke="none"/></g>`);
-svg('contact.svg',960,154,'Have a backend worth building? Let’s talk — kbelakov88@gmail.com',`
-  <rect width="960" height="154" rx="14" fill="#C5F277"/>
-  ${label(30,35,'NEXT / LET’S BUILD','#3F592B',12)}
-  ${text(27,87,38,'#17231C','Have a backend worth building?','font-weight="700" letter-spacing="-1.3"')}
-  ${text(30,125,19,'#3F592B','kbelakov88@gmail.com')}
-  <g fill="none" stroke="#17231C" stroke-width="2.5"><circle cx="885" cy="78" r="32"/><path d="m873 90 24-24h-23m23 0v23"/></g>`);
-for (const [name,idx,title,line1,line2,light] of [
-  ['schoolpro','01','SchoolPro','EDTECH · SOLE DEVELOPER','IN PRODUCTION SINCE MAY 2025',false],
-  ['hh-mogger','02','hh_mogger','JOB SEARCH AUTOMATION','TELEGRAM MINI APP',true],
-  ['anomia','03','ANOMIA','COMMERCIAL VISUAL NOVEL','RELEASED &amp; MONETISED',false]
-]) {
-  svg(`${name}-title-mobile.svg`,600,218,`${idx} / ${title}`,`
-    <rect x=".5" y=".5" width="599" height="217" rx="14" fill="${light?'#E9EDDF':'#17211D'}" stroke="${light?'#D6DDCB':'#314137'}"/>
-    ${label(28,37,`${idx} / SELECTED WORK`,light?'#53634F':'#9DAAA0',16)}
-    ${text(26,108,56,light?'#17231C':'#F3F5ED',title,'font-weight="700" letter-spacing="-1.6"')}
-    ${label(28,158,line1,light?'#53634F':'#9DAAA0',18)}
-    ${label(28,189,line2,light?'#53634F':'#9DAAA0',18)}
-    <path d="M531 32h35v35M531 67l35-35" fill="none" stroke="${light?'#53634F':'#C5F277'}" stroke-width="2"/>`);
-}
-svg('contact-mobile.svg',600,252,'Have a backend worth building? Let’s talk — kbelakov88@gmail.com',`
-  <rect width="600" height="252" rx="14" fill="#C5F277"/>
-  ${label(28,39,'NEXT / LET’S BUILD','#3F592B',17)}
-  ${text(25,107,42,'#17231C','Have a backend','font-weight="700" letter-spacing="-1.3"')}
-  ${text(25,157,42,'#17231C','worth building?','font-weight="700" letter-spacing="-1.3"')}
-  ${text(28,216,24,'#3F592B','kbelakov88@gmail.com')}
-  <g fill="none" stroke="#17231C" stroke-width="2.5"><circle cx="521" cy="121" r="32"/><path d="m509 133 24-24h-23m23 0v23"/></g>`);
-console.log('Generated profile SVG assets.');
+// Original SVG artwork. Node built-ins only; no external fonts or image services.
+const fs = require('node:fs');
+const path = require('node:path');
+const { summarize } = require('./activity.cjs');
+const root = path.join(__dirname, '..');
+const output = path.join(root, 'assets');
+const activity = JSON.parse(fs.readFileSync(path.join(root, 'data/activity.json'), 'utf8'));
+const summary = summarize(activity);
+fs.mkdirSync(output, { recursive: true });
 
+const palettes = {
+  dark: { bg: '#101916', panel: '#17241e', fg: '#eff4e9', muted: '#a8b8aa', border: '#33473a', accent: '#c7ed95', dim: '#6e9650' },
+  light: { bg: '#f5f8ef', panel: '#eaf0e2', fg: '#1b3022', muted: '#52644f', border: '#cbd6c2', accent: '#426b2d', dim: '#8da96d' },
+};
+const esc = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[c]);
+const t = (x, y, value, size = 16, cls = '', extra = '') => `<text x="${x}" y="${y}" font-size="${size}" class="${cls}" ${extra}>${esc(value)}</text>`;
+
+function svg(name, w, h, title, desc, p, body, motion = '', isStatic = false) {
+  const style = `text{font-family:Arial,Helvetica,sans-serif;fill:${p.fg}}.muted{fill:${p.muted}}.accent{fill:${p.accent}}.mono{font-family:Consolas,'Liberation Mono',monospace;letter-spacing:1px}.bold{font-weight:700;letter-spacing:-1px}.rule{fill:none;stroke:${p.border}}.panel{fill:${p.panel};stroke:${p.border}}${isStatic ? '' : motion}@media(prefers-reduced-motion:reduce){.moving,.stage{animation:none!important}.moving{display:none!important}.stage{opacity:0!important}}`;
+  const content = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-labelledby="title desc"><title id="title">${esc(title)}</title><desc id="desc">${esc(desc)}</desc><style>${style}</style><rect x=".5" y=".5" width="${w-1}" height="${h-1}" rx="16" fill="${p.bg}" stroke="${p.border}"/>${body}</svg>\n`;
+  fs.writeFileSync(path.join(output, `${name}.svg`), content);
+}
+
+function hero(mobile, p, isStatic) {
+  const w = mobile ? 600 : 1000, h = mobile ? 330 : 260;
+  const left = mobile ? 30 : 38;
+  let body = t(left, mobile ? 39 : 37, 'KEYSHEERO', mobile ? 18 : 13, 'mono muted');
+  body += t(left, mobile ? 99 : 101, 'Kirill Belyakov', mobile ? 47 : 54, 'bold');
+  body += t(left, mobile ? 139 : 142, 'Python backend developer', mobile ? 25 : 24);
+  body += t(left, mobile ? 174 : 210, 'Almaty, Kazakhstan', mobile ? 19 : 16, 'muted');
+  if (!mobile) body += '<path class="rule" d="M38 173H487"/>';
+  const y = mobile ? 242 : 118, xs = mobile ? [98, 300, 502] : [622, 780, 938];
+  body += `<path d="M${xs[0]} ${y}H${xs[2]}" stroke="${p.border}" stroke-width="2"/>`;
+  if (!isStatic) body += `<path class="moving" d="M${xs[0]} ${y}H${xs[2]}" fill="none" stroke="${p.accent}" stroke-width="2" stroke-dasharray="30 ${xs[2]-xs[0]}"/>`;
+  xs.forEach((x,i) => {
+    body += `<rect x="${x-28}" y="${y-28}" width="56" height="56" rx="15" class="panel"/>`;
+    if (!isStatic) body += `<rect x="${x-28}" y="${y-28}" width="56" height="56" rx="15" fill="none" stroke="${p.accent}" class="stage s${i}" opacity="0"/>`;
+    if (i === 0) body += `<g fill="none" stroke="${p.accent}" stroke-width="1.6"><path d="m${x-10} ${y} 7-7m-7 7 7 7m13-14 7 7-7 7"/></g>`;
+    if (i === 1) body += t(x,y+7,'{ }',23,'mono accent','text-anchor="middle"');
+    if (i === 2) body += `<g fill="none" stroke="${p.accent}" stroke-width="1.6"><ellipse cx="${x}" cy="${y-8}" rx="11" ry="4"/><path d="M${x-11} ${y-8}v16c0 6 22 6 22 0v-16M${x-11} ${y}c0 6 22 6 22 0"/></g>`;
+    body += t(x,y+59,['REQUEST','PYTHON','DATA'][i],mobile?15:12,'mono muted','text-anchor="middle"');
+  });
+  if (!mobile) {
+    body += t(610,37,'BACKEND / ASYNC',12,'mono muted');
+    body += t(780,210,'request → service → storage',13,'muted','text-anchor="middle"');
+  }
+  const travel = xs[2]-xs[0]+30;
+  const motion = `.moving{animation:travel 9s linear infinite}.stage{animation:stage 9s ease-in-out infinite}.s1{animation-delay:3s}.s2{animation-delay:6s}@keyframes travel{0%{stroke-dashoffset:35;opacity:0}8%{opacity:1}87%{opacity:1}100%{stroke-dashoffset:-${travel};opacity:0}}@keyframes stage{0%,32%,100%{opacity:0}10%,23%{opacity:.9}}`;
+  return { w,h,body,motion,title:'Kirill Belyakov — Python backend developer',desc:'Based in Almaty, Kazakhstan. The illustration follows a request through a Python service to storage. It is decorative, not live telemetry.' };
+}
+
+function proof(mobile, p) {
+  const w = mobile ? 600 : 1000, h = mobile ? 226 : 148;
+  const columns = mobile ? [[30,80],[330,80],[30,179]] : [[30,76],[365,76],[700,76]];
+  let body = '';
+  const values = [['100+','paying subscribers'],['5','user roles'],['May 2025','in production since']];
+  values.forEach(([value,label],i) => {
+    const [x,y] = columns[i];
+    body += t(x,y,value,mobile?(i===2?30:46):(i===2?36:46),'bold '+(i===0?'accent':''));
+    body += t(x,y+(mobile?29:31),label,mobile?19:18,'muted');
+  });
+  if(mobile) body += '<path class="rule" d="M300 28v82M30 137h540"/>';
+  else body += '<path class="rule" d="M330 28v92M665 28v92"/>';
+  return { w,h,body,title:'SchoolPro in production',desc:'100+ paying subscribers. Five user roles. In production since May 2025. Figures confirmed by the developer in November 2026.' };
+}
+
+function chart(mobile,p) {
+  const w=mobile?600:1000,h=mobile?360:230;
+  let body=t(30,35,'GITHUB / LAST 12 MONTHS',mobile?18:12,'mono muted');
+  const updated = new Date(`${activity.updated}T00:00:00Z`).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'});
+  if (!mobile) body+=t(970,35,`UPDATED ${updated.toUpperCase()}`,11,'mono muted','text-anchor="end"');
+  body+=t(30,103,summary.contributions.toLocaleString('en-US'),mobile?55:52,'bold accent');
+  body+=t(30,133,'contributions',mobile?20:17,'muted');
+  body+=t(mobile?320:250,103,String(summary.activeDays),mobile?55:52,'bold');
+  body+=t(mobile?320:250,133,'active days',mobile?20:17,'muted');
+  if (!mobile) body+=t(30,195,`${activity.start} → ${activity.end}`,12,'mono muted');
+  const cx=mobile?30:470,cy=mobile?282:169,cw=mobile?540:500,ch=mobile?88:91;
+  const max=Math.max(1,...summary.months.map(m=>m.count));
+  const step=cw/summary.months.length,bar=step*.56;
+  body+=`<path class="rule" d="M${cx} ${cy}h${cw}M${cx} ${cy-ch}h${cw}" opacity=".6"/>`;
+  summary.months.forEach((month,i)=>{
+    const bh=month.count===0?2:Math.max(3,(month.count/max)*ch),x=cx+i*step+(step-bar)/2;
+    body+=`<rect x="${x.toFixed(2)}" y="${(cy-bh).toFixed(2)}" width="${bar.toFixed(2)}" height="${bh.toFixed(2)}" rx="3" fill="${month.count===max?p.accent:month.count===0?p.border:p.dim}"><title>${esc(month.month)}: ${month.count} contributions</title></rect>`;
+    if(month.count>0)body+=t(cx+i*step+step/2,cy-bh-8,String(month.count),mobile?14:11,'muted','text-anchor="middle"');
+    body+=t(cx+i*step+step/2,cy+22,month.label,mobile?18:12,'muted','text-anchor="middle"');
+  });
+  if(mobile) body+=t(30,335,`UPDATED ${updated.toUpperCase()}`,16,'mono muted');
+  return {w,h,body,title:'GitHub activity over the last 12 months',desc:`${summary.contributions} contributions on ${summary.activeDays} active days from ${activity.start} to ${activity.end}. Counts come from the public GitHub profile. First and last chart months can be partial.`};
+}
+
+function flow(mobile,p,isStatic) {
+  const w=mobile?600:1000,h=mobile?414:246;
+  let body=t(28,36,'SCHOOLPRO / REQUEST FLOW',mobile?18:13,'mono muted');
+  const labels=[['Telegram event','aiogram / asyncio'],['Role middleware','Redis role cache'],['Domain services','Homework, quizzes, progress'],['PostgreSQL','SQLAlchemy / async access']];
+  labels.forEach(([label,detail],i)=>{
+    const x=mobile?76:28+i*245,y=mobile?64+i*76:73,cw=mobile?496:209,ch=mobile?60:104;
+    body+=`<rect x="${x}" y="${y}" width="${cw}" height="${ch}" rx="10" class="panel"/>`;
+    if(!isStatic)body+=`<rect x="${x}" y="${y}" width="${cw}" height="${ch}" rx="10" fill="none" stroke="${p.accent}" class="stage s${i}" opacity="0"/>`;
+    body+=t(x+16,y+(mobile?25:42),label,mobile?22:20);
+    body+=t(x+16,y+(mobile?48:74),detail,mobile?17:13,'muted');
+    if(mobile) {
+      if(i<3) body+=`<path d="M38 ${y+30}v76" class="rule" stroke-width="2"/>`;
+      body+=`<circle cx="38" cy="${y+30}" r="5" fill="${p.accent}"/>`;
+    } else if(i<3) body+=`<path d="M${x+cw+7} ${y+52}h17m-5-4 5 4-5 4" fill="none" stroke="${p.dim}" stroke-width="1.5"/>`;
+  });
+  if(!mobile) {
+    body+=`<path d="M132 200H867" class="rule" stroke-width="2"/>`;
+    if(!isStatic) body+=`<circle class="moving" cx="132" cy="200" r="4" fill="${p.accent}"/>`;
+  } else if(!isStatic)body+=`<circle class="moving" cx="38" cy="94" r="7" fill="${p.accent}"/>`;
+  body+=t(28,h-18,'Illustrated sequence · not live traffic',mobile?15:12,'muted');
+  const move=mobile?'translateY':'translateX',d=mobile?76:245;
+  const motion=`.stage{animation:step 12s ease-in-out infinite}.s1{animation-delay:3s}.s2{animation-delay:6s}.s3{animation-delay:9s}.moving{animation:packet 12s ease-in-out infinite}@keyframes step{0%,25%,100%{opacity:0}7%,18%{opacity:1}}@keyframes packet{0%,15%{transform:${move}(0px);opacity:1}25%,40%{transform:${move}(${d}px);opacity:1}50%,65%{transform:${move}(${d*2}px);opacity:1}75%,93%{transform:${move}(${d*3}px);opacity:1}99.9%{transform:${move}(${d*3}px);opacity:0}100%{transform:${move}(0px);opacity:0}}`;
+  return {w,h,body,motion,title:'SchoolPro request flow',desc:'A Telegram event passes through role middleware with Redis caching, domain services, and SQLAlchemy to PostgreSQL. This is an architectural illustration, not live traffic.'};
+}
+
+for(const [theme,p] of Object.entries(palettes))for(const mobile of [false,true]) {
+  for(const [id,draw,animated] of [['hero',hero,true],['proof',proof,false],['activity',chart,false],['flow',flow,true]]) {
+    for(const isStatic of animated?[false,true]:[false]) {
+      const name=id+(mobile?'-mobile':'')+(theme==='light'?'-light':'')+(isStatic?'-static':'');
+      const r=draw(mobile,p,isStatic);
+      svg(name,r.w,r.h,r.title,r.desc,p,r.body,r.motion,isStatic);
+    }
+  }
+}
+const readmePath=path.join(root,'README.md');
+const readme=fs.readFileSync(readmePath,'utf8');
+const alt=`GitHub activity: ${summary.contributions} contributions on ${summary.activeDays} active days, ${activity.start} to ${activity.end}. Updated ${activity.updated}.`;
+if(!readme.includes('alt="GitHub activity:'))throw new Error('Missing activity alt text anchor in README');
+fs.writeFileSync(readmePath,readme.replace(/alt="GitHub activity:[^"]*"/,`alt="${alt}"`));
+console.log('Generated themed, responsive artwork and accessible activity summary.');
