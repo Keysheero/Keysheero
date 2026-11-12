@@ -75,7 +75,7 @@ The repositories are private: client work and commercial projects. I can discuss
     <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="assets/activity-mobile-light.svg">
     <source media="(max-width: 600px)" srcset="assets/activity-mobile.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg">
-    <img src="assets/activity.svg" width="100%" alt="GitHub activity: 372 contributions on 55 active days, 2025-11-12 to 2026-11-11. Updated 2026-11-11.">
+    <img src="assets/activity.svg" width="100%" alt="GitHub activity: 373 contributions on 56 active days, 2025-11-13 to 2026-11-12. Updated 2026-11-12.">
   </picture>
 </a>
 
